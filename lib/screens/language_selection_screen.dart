@@ -1,4 +1,3 @@
-// lib/screens/language_selection_screen.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/user_progress_provider.dart';
@@ -43,9 +42,11 @@ class LanguageSelectionScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 60),
-              _buildLanguageCard(context, 'Japanese', '日本語', '🇯🇵', Colors.red),
+              _buildLanguageCard(
+                  context, 'Japanese', '日本語', '🇯🇵', Colors.red),
               const SizedBox(height: 30),
-              _buildLanguageCard(context, 'Spanish', 'Español', '🇪🇸', Colors.orange),
+              _buildLanguageCard(
+                  context, 'Spanish', 'Español', '🇪🇸', Colors.orange),
             ],
           ),
         ),
@@ -65,11 +66,12 @@ class LanguageSelectionScreen extends StatelessWidget {
         Provider.of<UserProgressProvider>(context, listen: false)
             .selectLanguage(language);
         Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => HomeScreen(selectedLanguage: language)),
+          MaterialPageRoute(
+              builder: (context) => HomeScreen(selectedLanguage: language)),
         );
       },
       child: Container(
-        height: 120,
+        padding: const EdgeInsets.symmetric(vertical: 16),
         margin: const EdgeInsets.symmetric(horizontal: 8),
         decoration: BoxDecoration(
           color: Colors.white,
@@ -83,13 +85,15 @@ class LanguageSelectionScreen extends StatelessWidget {
           ],
         ),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(flag, style: const TextStyle(fontSize: 40)),
             const SizedBox(height: 10),
             Text(
               language,
-              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style:
+                  const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             Text(
               nativeName,
